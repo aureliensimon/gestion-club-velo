@@ -1,0 +1,10 @@
+<?php
+  // Nom de l'utilisateur
+  define('DB_USER', '');
+  // Mot de passe de l'utilisateur
+  define('DB_PASSWORD', '');
+  // Nom de la base de donnée
+  define('DB_NAME', '');
+  // Serveur
+  define('DB_SERVER', '');
+?>
