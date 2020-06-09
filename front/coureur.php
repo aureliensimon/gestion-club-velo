@@ -16,21 +16,22 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
         <!-- CSS -->
-        <link rel="stylesheet" href="../css/color.css">
-        <link rel="stylesheet" href="../css/navbar.css">
-        <link rel="stylesheet" href="../css/footer.css">
+        <link rel="stylesheet" href="css/color.css">
+        <link rel="stylesheet" href="css/navbar.css">
+        <link rel="stylesheet" href="css/footer.css">
+        <link rel="stylesheet" href="css/fiche-coureur.css">
 
-        <link rel="stylesheet" href="../css/fiche-coureur.css">
+        <!-- JS -->
+        <script src="js/ajax.js" defer></script>
+        <script src="js/script.js" defer></script>
 
     </head>
     <body>
-        <script src="../js/ajax.js" defer></script>
-        <script src="../js/script.js" defer></script>
-        <?php include 'navbar.html';?>
-        <?php include 'fiche-course.html';?>
+        <?php include 'html/navbar.html';?>
+        <?php include 'html/fiche-coureur.html';?>
 
         <section id="runners"></section>
 
-        <?php include 'footer.html';?>
+        <?php include 'html/footer.html';?>
     </body>
 </html>

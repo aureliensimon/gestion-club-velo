@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="css/navbar.css">
         <link rel="stylesheet" href="css/footer.css">
 
-        <link rel="stylesheet" href="css/liste-course.css">
+        <link rel="stylesheet" href="css/fiche-course.css">
 
         <script src="js/test.js" defer></script>
     </head>
