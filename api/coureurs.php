@@ -7,7 +7,6 @@
     </head>
     <body>
         <script src="../front/js/modif_coureur.js" defer></script>
-        <script src="../front/js/ajax.js" defer></script>
         <header></header>
 
         <?php
