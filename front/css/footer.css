@@ -1,0 +1,11 @@
+footer {
+    background-color: var(--black) !important;
+}
+
+footer div {
+    color: var(--white) !important;
+}
+
+footer div a {
+    color: var(--blue) !important;
+}
