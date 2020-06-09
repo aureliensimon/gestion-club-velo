@@ -1,0 +1,82 @@
+#liste-coureurs {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+
+.fiche-coureur {
+    flex-basis: 45%;
+    background-color: var(--light-grey);
+    border-radius: 10px;
+    border: 5px solid var(--blue);
+    height: 200px;
+    margin: 10px;
+}
+
+.nom-coureur {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3.5vmin;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.categorie-coureur {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 2vmin;
+    margin-left: 25px;
+}
+
+.modifier-coureur {
+    margin-top: 10px;
+    margin-right: 25px;
+    float: right;
+    border: 0;
+    border-radius: 20px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.5vmin;
+    background-color: var(--blue);
+    padding: 5px 25px;
+}
+
+.second-row {
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.second-row div{
+    margin-top: 10px;
+}
+
+.right-panel {
+    float: right;
+    margin-right: 25px;
+}
+
+.icon-coureur {
+    width: 4vmin;
+    height: 4vmin;
+}
+
+.info-coureur {
+    margin-left: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.2vmin;
+}
+
+.info-italic-coureur {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.2vmin;
+    font-style: italic;
+    font-weight: 200;
+}
+.info-italic-coureur-value {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.2vmin;
+    font-style: italic;
+    font-weight: 200;
+}
+
