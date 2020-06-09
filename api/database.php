@@ -18,11 +18,11 @@ function dbConnect() {
 }
 
 //----------------------------------------------------------------------------
-//--- select_runners ---------------------------------------------------------
+//--- db_select_runners ------------------------------------------------------
 //----------------------------------------------------------------------------
 // Récupération de la liste des cyclistes d'un club
 // On retourn False si la requête est incorrecte
-function select_runners($db, $club) {
+function db_select_runners($db, $club) {
     try {
         $query = $db->prepare('SELECT * 
                                FROM cycliste
@@ -40,11 +40,11 @@ function select_runners($db, $club) {
 }
 
 //----------------------------------------------------------------------------
-//--- select_runner ----------------------------------------------------------
+//--- db_select_runner -------------------------------------------------------
 //----------------------------------------------------------------------------
 // Récupération d'un cycliste
 // On retourn False si la requête est incorrecte
-function select_runner ($db, $mail) {
+function db_select_runner ($db, $mail) {
     try {
         $query = $db->prepare('SELECT * 
                                FROM cycliste
@@ -62,11 +62,11 @@ function select_runner ($db, $mail) {
 }
 
 //----------------------------------------------------------------------------
-//--- modify_runner ----------------------------------------------------------
+//--- db_modify_runner -------------------------------------------------------
 //----------------------------------------------------------------------------
 // On modifie le champ modifié
 // On retourn False si la requête est incorrecte
-function modify_runner ($db, $row_mail, $mail, $surname, $name, $num_licence, $birthdate, $validate, $club, $code) {
+function db_modify_runner ($db, $row_mail, $mail, $surname, $name, $num_licence, $birthdate, $validate, $club, $code) {
     try {
       $query = $db->prepare("UPDATE cycliste 
                              SET mail=':mail', nom=':nom', prenom=':prenom', num_licence=':num_licence', date_naissance=':date_naissance', valide=':valide', club=':club', code_insee=':code_insee'
@@ -93,11 +93,11 @@ function modify_runner ($db, $row_mail, $mail, $surname, $name, $num_licence, $b
 }
 
 //----------------------------------------------------------------------------
-//--- select_runners ---------------------------------------------------------
+//--- db_select_racing -------------------------------------------------------
 //----------------------------------------------------------------------------
 // Récupération de la liste des cyclistes d'un club
 // On retourn False si la requête est incorrecte
-function select_racing($db) {
+function db_select_racing($db) {
     try {
         $query = $db->prepare('SELECT * 
                                FROM course
