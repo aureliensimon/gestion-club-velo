@@ -30,6 +30,7 @@
             <tr>
                 <th> <?= $value['nom'], ' ', $value['prenom']; ?> </th>
                 <th> <?= $value['categorie_categorie_valeur']; ?></th>
+                <th> <form><input type="button" id="modify" value="Modifier"></form> </th>
             </tr>
             <tr>
                 <td> <img src="../front/img/mail.png" alt="mail"> <?= $value['mail']; ?> </td>
