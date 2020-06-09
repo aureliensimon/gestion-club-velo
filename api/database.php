@@ -18,6 +18,48 @@ function dbConnect() {
 }
 
 //----------------------------------------------------------------------------
+//--- db_select_user ---------------------------------------------------------
+//----------------------------------------------------------------------------
+// Récupération du nom et du status admin ou non du user
+// On retourn False si la requête est incorrecte
+function db_select_user($db, $mail) {
+    try {
+        $query = $db->prepare('SELECT * 
+                               FROM user
+                               WHERE mail=:mail;');
+        $query->bindParam(':mail', $mail, PDO::PARAM_STR);
+        $query->execute();
+        $response = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $response;
+    }
+    catch (PDOException $exception) {
+        error_log('Connection error: '.$exception->getMessage());
+        return false;
+    }
+}
+
+//----------------------------------------------------------------------------
+//--- db_select_club ---------------------------------------------------------
+//----------------------------------------------------------------------------
+// Récupération du nom et du status admin ou non du user
+// On retourn False si la requête est incorrecte
+function db_select_club($db, $mail) {
+    try {
+        $query = $db->prepare('SELECT * 
+                               FROM club
+                               WHERE mail=:mail;');
+        $query->bindParam(':mail', $mail, PDO::PARAM_STR);
+        $query->execute();
+        $response = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $response;
+    }
+    catch (PDOException $exception) {
+        error_log('Connection error: '.$exception->getMessage());
+        return false;
+    }
+}
+
+//----------------------------------------------------------------------------
 //--- db_select_runners ------------------------------------------------------
 //----------------------------------------------------------------------------
 // Récupération de la liste des cyclistes d'un club
@@ -26,7 +68,7 @@ function db_select_runners($db, $club) {
     try {
         $query = $db->prepare('SELECT * 
                                FROM cycliste
-                               WHERE club=":club";');
+                               WHERE club=:club;');
         $query->bindParam(':club', $club, PDO::PARAM_STR);
         $query->execute();
         $response = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -36,7 +78,6 @@ function db_select_runners($db, $club) {
         error_log('Connection error: '.$exception->getMessage());
         return false;
     }
-    return true;
 }
 
 //----------------------------------------------------------------------------
@@ -48,7 +89,7 @@ function db_select_runner ($db, $mail) {
     try {
         $query = $db->prepare('SELECT * 
                                FROM cycliste
-                               WHERE mail=":mail";');
+                               WHERE mail=:mail;');
         $query->bindParam(':mail', $mail, PDO::PARAM_STR);
         $query->execute();
         $response = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -58,7 +99,6 @@ function db_select_runner ($db, $mail) {
         error_log('Connection error: '.$exception->getMessage());
         return false;
     }
-    return true;
 }
 
 //----------------------------------------------------------------------------
@@ -101,7 +141,7 @@ function db_select_racing($db) {
     try {
         $query = $db->prepare('SELECT * 
                                FROM course
-                               WHERE club=":club";');
+                               WHERE club=:club;');
         $query->bindParam(':club', $club, PDO::PARAM_STR);
         $query->execute();
         $response = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -111,6 +151,5 @@ function db_select_racing($db) {
         error_log('Connection error: '.$exception->getMessage());
         return false;
     }
-    return true;
 }
 ?>
