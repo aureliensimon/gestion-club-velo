@@ -19,9 +19,14 @@
         <link rel="stylesheet" href="css/color.css">
         <link rel="stylesheet" href="css/navbar.css">
         <link rel="stylesheet" href="css/footer.css">
+
+        <link rel="stylesheet" href="css/liste-course.css">
+
+        <script src="js/test.js" defer></script>
     </head>
     <body>
         <?php include 'html/navbar.html';?>
+        <?php include 'html/fiche-course.html';?>
 
         <section id="authentification">
             <form>
@@ -31,6 +36,10 @@
             </form>
         </section>
 
+        <div id="liste-courses">
+        </div>
+
+        
         <?php include 'html/footer.html';?>
     </body>
 </html>

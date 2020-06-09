@@ -1,5 +1,5 @@
-let parent = document.getElementById('liste-coureurs');
-let model = document.getElementById('fiche-coureur-modele');
+let parent = document.getElementById('liste-courses');
+let model = document.getElementById('fiche-course-modele');
     
 while(parent.firstChild) parent.removeChild(parent.firstChild);
 
