@@ -9,7 +9,7 @@
         
     </head>
     <body>
-        <?php include 'html/navbar.html';?>
+        <?php include 'html/navbar.html'; ?>
 
         <?php
             if ($_SESSION['user_mail'] != NULL) {
