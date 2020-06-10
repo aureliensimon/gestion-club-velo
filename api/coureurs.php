@@ -27,7 +27,6 @@ if ($requestRessource == 'runners') {
 
 if ($requestRessource == 'runner') {
     if ($requestMethod == 'GET') {
-        //var_dump($_POST);
         if (isset($_GET['mail'])) {
             $runners = db_select_runner($db, $_GET['mail']);
         } else {
