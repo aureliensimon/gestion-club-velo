@@ -1,12 +1,13 @@
 function loadCourses (courses) {
-    let model = document.getElementById('fiche-course-modele');
-    let parent = document.getElementById('liste-courses');
+    // let model = document.getElementById('fiche-course-modele');
+    // let parent = document.getElementById('liste-courses');
     
-    while (parent.firstChild) parent.removeChild(parent.firstChild);
+    // while (parent.firstChild) parent.removeChild(parent.firstChild);
 
-    courses.forEach(course => {
-        console.table(course);
-    });
+    // courses.forEach(course => {
+    //     console.table(course);
+    // });
+    console.log(courses);
 
 }
 

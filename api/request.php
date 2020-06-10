@@ -46,7 +46,7 @@ if ($requestRessource == 'runner') {
 
 if ($requestRessource == 'racing') {
     if ($requestMethod == 'GET') {
-
+        $data = db_select_racing($db);
     }
 }
 

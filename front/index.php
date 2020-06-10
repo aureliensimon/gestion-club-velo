@@ -7,7 +7,7 @@
         
         <title>Gestion club de vélo</title>
         <script src="js/ajax.js" defer></script>
-        <script src="js/test2.js" defer></script>
+        <script src="js/logout.js" defer></script>
         
     </head>
     <body>

@@ -115,9 +115,7 @@ function db_modify_runner ($db, $raw_mail='', $surname='', $name='', $num_licenc
 function db_select_racing($db) {
     try {
         $query = $db->prepare('SELECT * 
-                               FROM course
-                               WHERE club=:club;');
-        $query->bindParam(':club', $club, PDO::PARAM_STR);
+                               FROM course;');
         $query->execute();
         $response = $query->fetchAll(PDO::FETCH_ASSOC);
         return $response;

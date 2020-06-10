@@ -10,7 +10,7 @@
 
         <!-- JS -->
         <script src="js/ajax.js" defer></script>
-        <script src="js/courses.js" defer></script>
+        <script src="js/course.js" defer></script>
 
     </head>
     <body>
