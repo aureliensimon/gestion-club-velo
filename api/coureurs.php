@@ -33,10 +33,10 @@ if ($requestRessource == 'runner') {
             $runners = db_select_runner($db);
         }
     }
-    if ($requestMethod == 'PUT') {
+    if ($requestMethod == 'PUT' && $id != NULL) {
         parse_str(file_get_contents('php://input'), $_PUT);
-        if (isset($_PUT['raw_mail'])) {
-            $runners = db_modify_runner ($db, $_PUT['raw_mail'], $_PUT['mail'], $_PUT['nom'], $_PUT['prenom'], $_PUT['num_licence'], $_PUT['date_naissance'], $_PUT['validate'], $_PUT['club'], $_PUT['code_insee'], $_PUT['categorie'], $_PUT['categorie_categorie_valeur']);
+        if ($id !=NULL) {
+            $runners = db_modify_runner ($db, $id, $_PUT['nom'], $_PUT['prenom'], $_PUT['num_licence'], $_PUT['date_naissance'], $_PUT['valide'], $_PUT['club'], $_PUT['code_insee'], $_PUT['categorie'], $_PUT['categorie_categorie_valeur']);
         } else {
             $runners = db_modify_runner($db);
         }

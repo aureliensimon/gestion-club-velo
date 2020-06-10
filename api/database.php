@@ -106,12 +106,11 @@ function db_select_runner ($db, $mail='') {
 //----------------------------------------------------------------------------
 // On modifie le champ modifié
 // On retourn False si la requête est incorrecte
-function db_modify_runner ($db, $row_mail='', $mail='', $surname='', $name='', $num_licence='', $birthdate='', $validate='', $club='', $code='', $categorie='', $categorie_valeur='') {
+function db_modify_runner ($db, $raw_mail='', $mail='', $surname='', $name='', $num_licence='', $birthdate='', $validate='', $club='', $code='', $categorie='', $categorie_valeur='') {
     try {
       $query = $db->prepare("UPDATE cycliste 
-                             SET mail=':mail', nom=':nom', prenom=':prenom', num_licence=':num_licence', date_naissance=':date_naissance', valide=':valide', club=':club', code_insee=':code_insee', categorie=':categorie', categorie_categorie_valeur=':categorie_categorie_valeur'
-                             WHERE mail=':row_mail';");
-      $query->bindParam(':mail', $mail, PDO::PARAM_STR);
+                             SET nom=':nom', prenom=':prenom', num_licence=':num_licence', date_naissance=':date_naissance', valide=':valide', club=':club', code_insee=':code_insee', categorie=':categorie', categorie_categorie_valeur=':categorie_categorie_valeur'
+                             WHERE mail=':raw_mail';");
       $query->bindParam(':nom', $surname, PDO::PARAM_STR);
       $query->bindParam(':prenom', $name, PDO::PARAM_STR);
       $query->bindParam(':num_licence', $num_licence, PDO::PARAM_STR);
@@ -119,7 +118,7 @@ function db_modify_runner ($db, $row_mail='', $mail='', $surname='', $name='', $
       $query->bindParam(':valide', $validate, PDO::PARAM_STR);
       $query->bindParam(':club', $club, PDO::PARAM_STR);
       $query->bindParam(':code_insee', $code, PDO::PARAM_STR);
-      $query->bindParam(':row_mail', $row_mail, PDO::PARAM_STR);
+      $query->bindParam(':raw_mail', $raw_mail, PDO::PARAM_STR);
       $query->bindParam(':categorie', $categorie, PDO::PARAM_STR);
       $query->bindParam(':categorie_categorie_valeur', $categorie_valeur, PDO::PARAM_STR);
       $query->execute();
