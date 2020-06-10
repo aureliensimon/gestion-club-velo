@@ -16,35 +16,35 @@ if (!$db) {
 
 $id = array_shift($request); 
 if ($id == '') $id = NULL;
-$runners = false;
+$data = false;
 
 $mail = $_SESSION['user_mail'];
 if ($requestRessource == 'runners') {
     $user = db_select_club($db, $mail);
     foreach ($user as $key => $value) {
-        $runners = db_select_runners($db, $value['club']);
+        $data = db_select_runners($db, $value['club']);
     } 
 }
 
 if ($requestRessource == 'runner') {
     if ($requestMethod == 'GET') {
         if (isset($_GET['mail'])) {
-            $runners = db_select_runner($db, $_GET['mail']);
+            $data = db_select_runner($db, $_GET['mail']);
         } else {
-            $runners = db_select_runner($db);
+            $data = db_select_runner($db);
         }
     }
     if ($requestMethod == 'PUT') {
         parse_str(file_get_contents('php://input'), $_PUT);
         if ($id !=NULL) {
-            $runners = db_modify_runner ($db, $id, $_PUT['nom'], $_PUT['prenom'], $_PUT['num_licence'], $_PUT['date_naissance'], $_PUT['valide'], $_PUT['club'], $_PUT['code_insee']);
+            $data = db_modify_runner ($db, $id, $_PUT['nom'], $_PUT['prenom'], $_PUT['num_licence'], $_PUT['date_naissance'], $_PUT['valide'], $_PUT['club'], $_PUT['code_insee']);
         } else {
-            $runners = db_modify_runner($db);
+            $data = db_modify_runner($db);
         }
     }
 }
 
-if ($runners === false) {
+if ($data === false) {
     header('HTTP/1.1 400 Bad Request');
     exit();
 }
@@ -58,6 +58,6 @@ if ($requestMethod == 'POST') {
     header('HTTP/1.1 200 OK');
 }
 
-echo json_encode($runners);
+echo json_encode($data);
 exit;
 ?>

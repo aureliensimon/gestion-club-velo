@@ -10,4 +10,4 @@ function loadCourses (courses) {
 
 }
 
-ajaxRequest ('GET', '../api/coureurs.php/racing', loadCourses);
+ajaxRequest ('GET', '../api/request.php/racing', loadCourses);

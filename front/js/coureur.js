@@ -9,7 +9,7 @@ function loadRunners (runners) {
 
 function modify_runner (mail) {
     console.log(mail);
-    ajaxRequest ('GET', '../api/coureurs.php/runner/?mail='+mail, loadRunner);
+    ajaxRequest ('GET', '../api/request.php/runner/?mail='+mail, loadRunner);
 }
 
 function loadRunner (data) {
@@ -23,12 +23,12 @@ function loadRunner (data) {
     });
     $('#modifier').on('submit', (event) => {
         event.preventDefault();
-        ajaxRequest ('PUT', '../api/coureurs.php/runner/' + $('input[name=raw_mail]').val(), () => {
-            ajaxRequest ('GET', '../api/coureurs.php/runners', loadRunners);
+        ajaxRequest ('PUT', '../api/request.php/runner/' + $('input[name=raw_mail]').val(), () => {
+            ajaxRequest ('GET', '../api/request.php/runners', loadRunners);
         },
         'nom=' + $('input[name=nom]').val() + '&prenom=' + $('input[name=prenom]').val()+'&num_licence=' + $('input[name=num_licence]').val() + '&date_naissance=' + $('input[name=date_naissance]').val() + '&valide=' + $('input[name=valide]').val() + '&club=' + $('input[name=club]').val() + '&code_insee=' + $('input[name=code_insee]').val() );
     });
 }
 
-ajaxRequest ('GET', '../api/coureurs.php/runners', loadRunners);
+ajaxRequest ('GET', '../api/request.php/runners', loadRunners);
 

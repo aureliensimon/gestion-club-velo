@@ -18,27 +18,6 @@ function dbConnect() {
 }
 
 //----------------------------------------------------------------------------
-//--- db_select_user ---------------------------------------------------------
-//----------------------------------------------------------------------------
-// Récupération du nom et du status admin ou non du user
-// On retourn False si la requête est incorrecte
-function db_select_user($db, $mail) {
-    try {
-        $query = $db->prepare('SELECT * 
-                               FROM user
-                               WHERE mail=:mail;');
-        $query->bindParam(':mail', $mail, PDO::PARAM_STR);
-        $query->execute();
-        $response = $query->fetchAll(PDO::FETCH_ASSOC);
-        return $response;
-    }
-    catch (PDOException $exception) {
-        error_log('Connection error: '.$exception->getMessage());
-        return false;
-    }
-}
-
-//----------------------------------------------------------------------------
 //--- db_select_club ---------------------------------------------------------
 //----------------------------------------------------------------------------
 // Récupération du nom et du status admin ou non du user
