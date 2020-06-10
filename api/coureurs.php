@@ -1,5 +1,6 @@
 <?php
- 
+session_start();
+
 require ('database.php');
 
 $requestMethod = $_SERVER['REQUEST_METHOD']; //get
@@ -17,7 +18,7 @@ $id = array_shift($request);
 if ($id == '') $id = NULL;
 $runners = false;
 
-$mail = "mccall@serie.fr";
+$mail = $_SESSION['user_mail'];
 if ($requestRessource == 'runners') {
     $user = db_select_club($db, $mail);
     foreach ($user as $key => $value) {

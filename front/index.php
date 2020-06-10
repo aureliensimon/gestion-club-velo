@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,14 +11,13 @@
     <body>
         <?php include 'html/navbar.html';?>
 
-        <section id="authentification">
-            <form>
-                <label>Veuillez entrer votre adresse mail :</label>
-                <input type="email" id="mail" placeholder="exemple@test.com" autofocus required>
-                <input type="password" id="pwd" placeholder="password" autofocus required>
-                <input type="button" id="submit" value="Confirmer">
-            </form>
-        </section>
+        <?php
+            if ($_SESSION['user_mail'] != NULL) {
+                echo '<span>Rebonjour, '. $_SESSION['user_mail'] .'</span>';
+            } else {
+                include 'html/form-auth.html';
+            }
+        ?>
         
         <?php include 'html/footer.html';?>
     </body>

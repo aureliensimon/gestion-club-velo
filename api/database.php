@@ -148,4 +148,27 @@ function db_select_racing($db) {
         return false;
     }
 }
+
+//----------------------------------------------------------------------------
+//--- db_auth_user -------------------------------------------------------
+//----------------------------------------------------------------------------
+// Renvois si l'utilisateur existe
+function db_auth_user($db, $mail, $pwd) {
+    try {
+        $query = $db->prepare('SELECT * 
+                               FROM user
+                               WHERE mail=:mail AND password=:password;
+                            ');
+        $query->bindParam(':mail', $mail, PDO::PARAM_STR);
+        $query->bindParam(':password', $pwd, PDO::PARAM_STR);
+        $query->execute();
+        $response = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        return sizeof($response);
+    }
+    catch (PDOException $exception) {
+        error_log('Connection error: '.$exception->getMessage());
+        return false;
+    }
+}
 ?>
