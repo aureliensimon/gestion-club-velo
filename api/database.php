@@ -64,7 +64,7 @@ function db_select_club($db, $mail) {
 //----------------------------------------------------------------------------
 // Récupération de la liste des cyclistes d'un club
 // On retourn False si la requête est incorrecte
-function db_select_runners($db, $club) {
+function db_select_runners($db, $club='') {
     try {
         $query = $db->prepare('SELECT * 
                                FROM cycliste
@@ -85,7 +85,7 @@ function db_select_runners($db, $club) {
 //----------------------------------------------------------------------------
 // Récupération d'un cycliste
 // On retourn False si la requête est incorrecte
-function db_select_runner ($db, $mail) {
+function db_select_runner ($db, $mail='') {
     try {
         $query = $db->prepare('SELECT * 
                                FROM cycliste
