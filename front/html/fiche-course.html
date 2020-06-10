@@ -1,25 +1,29 @@
-<div class="fiche-course" id="fiche-course-modele">
+<div class="fiche-course" id="fiche-course-modele" style="display: none;">
     <div class="first-row">
         <img class="trophy-img" src="img/trophy.png"></img>
         <span class="nom-course"></span>
-        <span class="categorie-course">(<span class="categorie-course-value"></span>)</span>
-        <button class="ajouter-coureur"></button>
+        <span class="date">(<span class="date-course"></span>)</span>
+        <button class="ajouter-coureur">Ajouter un joueur</button>
     </div>
     <div class="second-row">
-        <div>
-            Membres du club :
-            <div class="liste-coureur-club">
-            </div>
+        <div class="course-coureur">
+            Joueurs du club inscrits : 
+            <span class="nom-coureur"></span>
+            <span class="num-licence"></span>
         </div>
         <div>
-            Autres :
-            <div class="liste-coureur-club">
-            </div>
+            Nombre d'inscriptions max : <span id="inscriptions_max"></span>
+            <br>
+            Longueur du tour : <span id="longueur_tour"></span>
+            <br>
+            Nombre de tours : <span id="nb_tour"></span>
+            <br>
+            Distance totale : <span id="distance"></span>
+        </div>
+        <div>
+            organisé par <span id="club_orga"></span>
         </div>
     </div>
+    
 </div>
 
-<div class="course-coureur">
-    <span class="nom-coureur"></span>
-    <span class="num-licence"></span>
-</div>
