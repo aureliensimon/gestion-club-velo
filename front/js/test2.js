@@ -1,7 +1,8 @@
 'use strict';
 
 function disconnect (){
-    var text = "<?php $_SESSION=array(); ?>";
-    $('#test').html(text);
+    ajaxRequest ('GET', '../api/logout.php', () => {
+        console.log('ok boomer');
+    });
     location.reload(true);
 }

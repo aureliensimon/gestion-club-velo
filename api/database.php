@@ -143,7 +143,7 @@ function db_auth_user($db, $mail, $pwd) {
         $query->execute();
         $response = $query->fetchAll(PDO::FETCH_ASSOC);
         
-        return sizeof($response);
+        return $response;
     }
     catch (PDOException $exception) {
         error_log('Connection error: '.$exception->getMessage());

@@ -1,5 +1,5 @@
 <?php
-session_start();
+@session_start();
 
 require ('database.php');
 
@@ -41,6 +41,12 @@ if ($requestRessource == 'runner') {
         } else {
             $data = db_modify_runner($db);
         }
+    }
+}
+
+if ($requestRessource == 'racing') {
+    if ($requestMethod == 'GET') {
+
     }
 }
 

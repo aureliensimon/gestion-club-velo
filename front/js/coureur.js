@@ -21,8 +21,7 @@ function loadRunner (data) {
         //console.log(text);
         $('#runner').append(text);
     });
-    $('#modifier').on('submit', (event) => {
-        event.preventDefault();
+    $('#modifier').on('submit', () => {
         ajaxRequest ('PUT', '../api/request.php/runner/' + $('input[name=raw_mail]').val(), () => {
             ajaxRequest ('GET', '../api/request.php/runners', loadRunners);
         },
