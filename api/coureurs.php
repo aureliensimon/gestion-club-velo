@@ -34,10 +34,14 @@ if ($requestRessource == 'runner') {
             $runners = db_select_runner($db);
         }
     }
+    if ($requestMethod == 'PUT') {
+        if (isset($_GET['raw_mail'])) {
+            $runners = db_modify_runner ($db, $_GET['raw_mail'], $_GET['mail'], $_GET['nom'], $_GET['prenom'], $_GET['num_licence'], $_GET['date_naissance'], $_GET['validate'], $_GET['club'], $_GET['code_insee'], $_GET['categorie'], $_GET['categorie_categorie_valeur']);
+        } else {
+            $runners = db_modify_runner($db);
+        }
+    }
 }
-    // if ($requestMethod == 'PUT') {
-
-    // }
 
 if ($runners === false) {
     header('HTTP/1.1 400 Bad Request');

@@ -106,10 +106,10 @@ function db_select_runner ($db, $mail='') {
 //----------------------------------------------------------------------------
 // On modifie le champ modifié
 // On retourn False si la requête est incorrecte
-function db_modify_runner ($db, $row_mail, $mail, $surname, $name, $num_licence, $birthdate, $validate, $club, $code) {
+function db_modify_runner ($db, $row_mail='', $mail='', $surname='', $name='', $num_licence='', $birthdate='', $validate='', $club='', $code='', $categorie='', $categorie_valeur='') {
     try {
       $query = $db->prepare("UPDATE cycliste 
-                             SET mail=':mail', nom=':nom', prenom=':prenom', num_licence=':num_licence', date_naissance=':date_naissance', valide=':valide', club=':club', code_insee=':code_insee'
+                             SET mail=':mail', nom=':nom', prenom=':prenom', num_licence=':num_licence', date_naissance=':date_naissance', valide=':valide', club=':club', code_insee=':code_insee', categorie=':categorie', categorie_categorie_valeur=':categorie_categorie_valeur'
                              WHERE mail=':row_mail';");
       $query->bindParam(':mail', $mail, PDO::PARAM_STR);
       $query->bindParam(':nom', $surname, PDO::PARAM_STR);
@@ -120,6 +120,8 @@ function db_modify_runner ($db, $row_mail, $mail, $surname, $name, $num_licence,
       $query->bindParam(':club', $club, PDO::PARAM_STR);
       $query->bindParam(':code_insee', $code, PDO::PARAM_STR);
       $query->bindParam(':row_mail', $row_mail, PDO::PARAM_STR);
+      $query->bindParam(':categorie', $categorie, PDO::PARAM_STR);
+      $query->bindParam(':categorie_categorie_valeur', $categorie_valeur, PDO::PARAM_STR);
       $query->execute();
       echo '<div class="alert alert-success" role="alert">
                 Modification effectuée. Vous pouvez rafraichir la page.

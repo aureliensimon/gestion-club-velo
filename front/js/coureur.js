@@ -39,14 +39,17 @@ function loadRunner (data) {
     document.getElementById('runner').style.display= 'flex';
     raw_mail = data['0']['mail'];
     data.forEach(function (element) {
-        var text='<form><legend>Vous pouvez modifier les champs :</legend><br><label>E-mail : </label><input type="email" name="mail" value="'+element['mail']+'"><br><label>Nom : </label><input type="text" name="nom" value="'+element['nom']+'"><br><label>Prénom : </label><input type="text" name="prenom" value="'+element['prenom']+'"><br><label>Numéro de la licence : </label><input type="number" name="num_licence" value="'+element['num_licence']+'"><br><label>Date de naissance : </label><input type="date" name="date_naissance" value="'+element['date_naissance']+'"><br><label>Valide : </label><input type="number" name="valide" value="'+element['valide']+'"><br><label>Club : </label><input type="text" name="club" value="'+element['club']+'"><br><label>Code INSEE : </label><input type="number" name="code_insee" value="'+element['code_insee']+'"><input type="hidden" name="categorie" value="'+element['categorie']+'"><input type="hidden" name="categorie" value="'+element['categorie_categorie_valeur']+'"><input type="hidden" name="categorie" value="'+raw_mail+'"><br><input type="submit" id="modifier" value="Modifier"></form>';
+        var text='<form><legend>Vous pouvez modifier les champs :</legend><br><label>E-mail : </label><input type="email" name="mail" value="'+element['mail']+'"><br><label>Nom : </label><input type="text" name="nom" value="'+element['nom']+'"><br><label>Prénom : </label><input type="text" name="prenom" value="'+element['prenom']+'"><br><label>Numéro de la licence : </label><input type="number" name="num_licence" value="'+element['num_licence']+'"><br><label>Date de naissance : </label><input type="date" name="date_naissance" value="'+element['date_naissance']+'"><br><label>Valide : </label><input type="number" name="valide" value="'+element['valide']+'"><br><label>Club : </label><input type="text" name="club" value="'+element['club']+'"><br><label>Code INSEE : </label><input type="number" name="code_insee" value="'+element['code_insee']+'"><input type="hidden" name="categorie" value="'+element['categorie']+'"><input type="hidden" name="categorie" value="'+element['categorie_categorie_valeur']+'"><input type="hidden" name="raw_mail" value="'+raw_mail+'"><br><input type="submit" id="modifier" value="Modifier"></form>';
         console.log(text);
         $('#runner').append(text);
     });
 }
 
+function test (){
+    console.log('coucou');
+}
 ajaxRequest ('GET', '../api/coureurs.php/runners', loadRunners);
 
 $('#runner').on('submit', 'modifier', () => {
-    ajaxRequest ('PUT', '../api/coureurs.php/runner/', loadRunners);
+    ajaxRequest ('PUT', '../api/coureurs.php/runner/', test);
 });
