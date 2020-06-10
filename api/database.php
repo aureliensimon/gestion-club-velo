@@ -123,10 +123,7 @@ function db_modify_runner ($db, $row_mail='', $mail='', $surname='', $name='', $
       $query->bindParam(':categorie', $categorie, PDO::PARAM_STR);
       $query->bindParam(':categorie_categorie_valeur', $categorie_valeur, PDO::PARAM_STR);
       $query->execute();
-      echo '<div class="alert alert-success" role="alert">
-                Modification effectuée. Vous pouvez rafraichir la page.
-            </div>';
-      return true;
+      return "";
   
     } catch (PDOExecption $exception) {
       error_log('Connection error: '.$exception->getMessage());
