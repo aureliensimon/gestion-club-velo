@@ -10,12 +10,12 @@
 
         <!-- JS -->
         <script src="js/ajax.js" defer></script>
-        <script src="js/script.js" defer></script>
+        <script src="js/courses.js" defer></script>
 
     </head>
     <body>
         <?php include 'html/navbar.html';?>
-        <?php include 'html/fiche-coureur.html';?>
+        <?php include 'html/fiche-course.html';?>
 
         <section id="liste-courses"></section>
 
