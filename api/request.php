@@ -24,7 +24,11 @@ if ($requestRessource == 'runners') {
     foreach ($user as $key => $value) {
         $data = db_select_runners($db, $value['club']);
         if (isset($_GET['idcourse'])) {
-            $data = db_racing_runners($db, $value['club'], $_GET['idcourse']);
+            if ($_GET['club_course'] == $value['club']) {
+                $data = db_racing_all_runners($db, $_GET['idcourse']);
+            } else {
+                $data = db_racing_club_runners($db, $value['club'], $_GET['idcourse']);
+            }
         }
     } 
 }
@@ -34,7 +38,7 @@ if ($requestRessource == 'runner') {
         if (isset($_GET['mail'])) {
             $data = db_select_runner($db, $_GET['mail']);
         } else {
-            $data = db_select_runner($db);
+            $data = "";
         }
     }
     if ($requestMethod == 'PUT') {
@@ -42,7 +46,7 @@ if ($requestRessource == 'runner') {
         if ($id !=NULL) {
             $data = db_modify_runner ($db, $id, $_PUT['nom'], $_PUT['prenom'], $_PUT['num_licence'], $_PUT['date_naissance'], $_PUT['valide'], $_PUT['club'], $_PUT['code_insee']);
         } else {
-            $data = db_modify_runner($db);
+            $data = "";
         }
     }
 }
@@ -53,8 +57,10 @@ if ($requestRessource == 'racing') {
     }
     if ($requestMethod == 'POST') {
         $data = db_select_runner($db, $_POST['mail']);
-        if (isset($_POST['id'])) {
+        if (isset($_POST['id']) && $data[0]['valide'] == 1) {
             $data = db_post_racing_runner($db, $_POST['mail'], $_POST['id'], $_POST['place'], $_POST['dossart'], $_POST['nb_points'], $_POST['temps']);
+        } else {
+            $data="";
         }
     }
 }
@@ -62,6 +68,8 @@ if ($requestRessource == 'racing') {
 if ($requestRessource == 'add_racing') {
     if ($requestMethod == 'POST') {
         $data = db_add_racing($db, $_POST['libelle'], $_POST['date'], $_POST['nb_tour'], $_POST['distance'], $_POST['nb_coureurs'], $_POST['longueur_tour'], $_POST['club']);
+    } else {
+        $data="";
     }
 }
 

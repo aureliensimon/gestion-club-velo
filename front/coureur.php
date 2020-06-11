@@ -50,6 +50,7 @@
             </div>
         </nav>
 
+        <section id="errors" style="display: none;"></section>
         <section id="runners"></section>
         <section id="runner" style="display: none"></section>
         

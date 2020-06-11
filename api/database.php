@@ -155,7 +155,33 @@ function db_select_racing($db) {
 //----------------------------------------------------------------------------
 // Renvois si l'utilisateur existe
 // On retourn False si la requête est incorrecte
-function db_racing_runners($db, $club, $idcourse) {
+function db_racing_all_runners($db, $idcourse) {
+    try {
+        $query = $db->prepare('SELECT c.nom,c.prenom, c.mail, co.id 
+                               FROM cycliste c
+                               JOIN participe p
+                               JOIN course co
+                               WHERE c.mail=p.mail
+                               AND co.id=p.id
+                               AND p.id=:id;;
+                            ');
+        $query->bindParam(':id', $idcourse, PDO::PARAM_INT);
+        $query->execute();
+        $response = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $response;
+    }
+    catch (PDOException $exception) {
+        error_log('Connection error: '.$exception->getMessage());
+        return false;
+    }
+}
+
+//----------------------------------------------------------------------------
+//--- db_racing_club_runners -------------------------------------------------
+//----------------------------------------------------------------------------
+// Renvois si l'utilisateur existe
+// On retourn False si la requête est incorrecte
+function db_racing_club_runners($db, $club, $idcourse) {
     try {
         $query = $db->prepare('SELECT c.nom,c.prenom, c.mail, co.id 
                                FROM cycliste c

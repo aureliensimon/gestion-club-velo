@@ -76,6 +76,7 @@
             </div>
         </div>
 
+        <section id="errors" style="display: none;"></section>
         <section id="liste-courses"></section>
         <section id="inscription-coureur"></Section>
         <button id="ajouter-course" class="btn btn-success">Ajouter une course</button>

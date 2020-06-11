@@ -14,8 +14,8 @@ function loadCourses (courses) {
         ficheCourse.find('#club_orga').text(course['club']);
         ficheCourse.find('.nom-coureur').attr('id', course['id']);
 
-        ajaxRequest ('GET', '../api/request.php/runners/?idcourse=' + course['id'], getRunners);
-        ficheCourse.find('.ajouter-coureur').attr('onclick', 'add_runner("' + course['id'] + '")')
+        ajaxRequest ('GET', '../api/request.php/runners/?idcourse=' + course['id'] + '&club_course=' + course['club'], getRunners);
+        ficheCourse.find('.ajouter-coureur').attr('onclick', 'add_runner("' + course['id'] + '")');
 
         $('#liste-courses').append(ficheCourse);
     });
@@ -48,6 +48,7 @@ function add_runner (id) {
     email.attr('name', 'mail');
     email.attr('type', 'email');
     email.attr('placeholder', 'Ex : exemple@test.com');
+    email.prop('required', true);
 
     var hidden_id = $('<input>');
     hidden_id.attr('name', 'id');
@@ -58,21 +59,25 @@ function add_runner (id) {
     place.attr('name', 'place');
     place.attr('type', 'text');
     place.attr('placeholder', 'Ex : 1');
+    place.prop('required', true);
 
     var dossart = $('<input>');
     dossart.attr('name', 'dossart');
     dossart.attr('type', 'number');
     dossart.attr('placeholder', 'Ex : 33');
+    dossart.prop('required', true);
 
     var nb_points = $('<input>');
     nb_points.attr('name', 'nb_points');
     nb_points.attr('type', 'number');
     nb_points.attr('placeholder', 'Ex : 15');
+    nb_points.prop('required', true);
 
     var temps = $('<input>');
     temps.attr('name', 'temps');
     temps.attr('type', 'text');
     temps.attr('placeholder', '00:30:00 (30 min)');
+    temps.prop('required', true);
 
     form.append(legend);
     form.append(email);
@@ -86,8 +91,8 @@ function add_runner (id) {
     $('#inscription-coureur').append(form);
     $('#confirmer').on('submit', () => {
         event.preventDefault();
-        ajaxRequest ('POST', '../api/request.php/racing/', () => {
-            location.reload(true);
+        ajaxRequest ('POST', '../api/request.php/racing/', (data) => {
+                location.reload(true);
         }, $("#confirmer").serialize());
     });
 }
@@ -117,6 +122,7 @@ $('#ajouter-course').on('click', () => {
     libelle.attr('name', 'libelle');
     libelle.attr('type', 'text');
     libelle.attr('placeholder', 'Ex : Course cycliste à BREST');
+    libelle.prop('required', true);
 
     var label_date = $('<label>');
     label_date.text("Date de la course : ");
@@ -124,6 +130,7 @@ $('#ajouter-course').on('click', () => {
     date.attr('name', 'date');
     date.attr('type', 'date');
     date.attr('placeholder', 'Ex : 2020-03-20');
+    date.prop('required', true);
 
     var label_tours = $('<label>');
     label_tours.text("Nombre de tours : ");
@@ -131,6 +138,7 @@ $('#ajouter-course').on('click', () => {
     tours.attr('name', 'nb_tour');
     tours.attr('type', 'number');
     tours.attr('placeholder', 'Ex : 1');
+    tours.prop('required', true);
 
     var label_distance = $('<label>');
     label_distance.text("Distance totale (en km) : ");
@@ -138,6 +146,7 @@ $('#ajouter-course').on('click', () => {
     distance.attr('name', 'distance');
     distance.attr('type', 'number');
     distance.attr('placeholder', 'Ex : 33');
+    distance.prop('required', true);
 
     var label_nb_coureurs = $('<label>');
     label_nb_coureurs.text("Nombre de coureurs max : ");
@@ -145,6 +154,7 @@ $('#ajouter-course').on('click', () => {
     nb_coureurs.attr('name', 'nb_coureurs');
     nb_coureurs.attr('type', 'number');
     nb_coureurs.attr('placeholder', 'Ex : 15');
+    nb_coureurs.prop('required', true);
 
     var label_longueur = $('<label>');
     label_longueur.text("Longueur d'un tour (en km) : ");
@@ -152,6 +162,7 @@ $('#ajouter-course').on('click', () => {
     longueur_tour.attr('name', 'longueur_tour');
     longueur_tour.attr('type', 'number');
     longueur_tour.attr('placeholder', '80');
+    longueur_tour.prop('required', true);
 
     var label_club = $('<label>');
     label_club.text("Club qui organise : ");
@@ -159,6 +170,7 @@ $('#ajouter-course').on('click', () => {
     club.attr('name', 'club');
     club.attr('type', 'text');
     club.attr('placeholder', 'Ex : ABC PLOUESCAT');
+    club.prop('required', true);
 
     form.append(legend);
     form.append(label_libelle);
@@ -187,8 +199,16 @@ $('#ajouter-course').on('click', () => {
     $('#confirmer').on('submit', (event) => {
         event.preventDefault();
         ajaxRequest ('POST', '../api/request.php/add_racing/', () => {
-            //location.reload(true);
-        }, $("#confirmer").serialize());
+            if (data !== "") {
+                location.reload(true);
+            } else {
+                document.getElementById('errors').style.display= 'flex';
+                var div = $('<div>');
+                div.addClass('alert alert-danger');
+                div.attr('role', 'alert');
+                div.text('Erreur, Une information dans la saisie de la course n\'est pas valide. Veuillez réessayer.');
+                $('#errors').append(div);
+            }        }, $("#confirmer").serialize());
     });
 });
 

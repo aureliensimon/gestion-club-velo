@@ -1,6 +1,7 @@
 'use strict';
 
-var login = 'jlr@mental.com';
+//var login = 'jlr@mental.com';
+var login = 'mccall@serie.fr';
 var password ='test';
 
 //----------------------------------------------------------------------------

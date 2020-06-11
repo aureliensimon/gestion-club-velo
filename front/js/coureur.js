@@ -1,8 +1,7 @@
 function loadRunners (runners) {
-    var text="";
+    console.log(runners);
     runners.forEach(function (element) {
         console.log(element);
-        var name = element['nom'];
 
         // Div principale
         var div = $("<div>");
