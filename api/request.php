@@ -23,6 +23,9 @@ if ($requestRessource == 'runners') {
     $user = db_select_club($db, $mail);
     foreach ($user as $key => $value) {
         $data = db_select_runners($db, $value['club']);
+        if (isset($_GET['idcourse'])) {
+            $data = db_racing_runners($db, $value['club'], $_GET['idcourse']);
+        }
     } 
 }
 

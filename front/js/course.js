@@ -21,15 +21,21 @@ function loadCourses (courses) {
         ficheCourse.find('#nb_tour').text(course['nb_tour']);
         ficheCourse.find('#distance').text(course['distance']);
         ficheCourse.find('#club_orga').text(course['club']);
+        ficheCourse.find('.course-coureur').attr('id', course['id']);
 
-        ajaxRequest ('GET', '../api/request.php/runners', getRunners);
-        //ficheCourse.find('#club_orga').attr('onclick', 'add_runner("' + course + '")')
-
+        ajaxRequest ('GET', '../api/request.php/runners/?idcourse=' + course['id'], getRunners);
+        ficheCourse.find('.ajouter-coureur').attr('onclick', 'add_runner("' + course['id'] + '", "' + course['mail'] + '")')
 
         $('#liste-courses').append(ficheCourse);
     });
+}
 
-    
+function getRunners (data) {
+    console.log(data);
+    data.forEach(function (element) {
+        var text = '<br>' + element['nom'] + ' ' + element['prenom'];
+        $('#' + element['id']).append(text);
+    });
 }
 
 ajaxRequest ('GET', '../api/request.php/racing', loadCourses);

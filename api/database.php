@@ -18,6 +18,30 @@ function dbConnect() {
 }
 
 //----------------------------------------------------------------------------
+//--- db_auth_user -----------------------------------------------------------
+//----------------------------------------------------------------------------
+// Fonction qui authentifie et vérifie que le user est correct
+// On return False si la requête est incorrecte
+function db_auth_user($db, $mail, $pwd) {
+    try {
+        $query = $db->prepare('SELECT * 
+                               FROM user
+                               WHERE mail=:mail AND password=:password;
+                            ');
+        $query->bindParam(':mail', $mail, PDO::PARAM_STR);
+        $query->bindParam(':password', $pwd, PDO::PARAM_STR);
+        $query->execute();
+        $response = $query->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $response;
+    }
+    catch (PDOException $exception) {
+        error_log('Connection error: '.$exception->getMessage());
+        return false;
+    }
+}
+
+//----------------------------------------------------------------------------
 //--- db_select_club ---------------------------------------------------------
 //----------------------------------------------------------------------------
 // Récupération du nom et du status admin ou non du user
@@ -127,17 +151,23 @@ function db_select_racing($db) {
 }
 
 //----------------------------------------------------------------------------
-//--- db_auth_user -------------------------------------------------------
+//--- db_racing_runners_list -------------------------------------------------
 //----------------------------------------------------------------------------
 // Renvois si l'utilisateur existe
-function db_auth_user($db, $mail, $pwd) {
+// On retourn False si la requête est incorrecte
+function db_racing_runners($db, $club, $idcourse) {
     try {
-        $query = $db->prepare('SELECT * 
-                               FROM user
-                               WHERE mail=:mail AND password=:password;
+        $query = $db->prepare('SELECT c.nom,c.prenom, c.mail, co.id 
+                               FROM cycliste c
+                               JOIN participe p
+                               JOIN course co
+                               WHERE c.mail=p.mail
+                               AND co.id=p.id
+                               AND p.id=:id
+                               AND c.club=:club;
                             ');
-        $query->bindParam(':mail', $mail, PDO::PARAM_STR);
-        $query->bindParam(':password', $pwd, PDO::PARAM_STR);
+        $query->bindParam(':club', $club, PDO::PARAM_STR);
+        $query->bindParam(':id', $idcourse, PDO::PARAM_INT);
         $query->execute();
         $response = $query->fetchAll(PDO::FETCH_ASSOC);
         
