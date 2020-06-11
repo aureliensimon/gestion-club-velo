@@ -51,14 +51,9 @@ if ($requestRessource == 'racing') {
     if ($requestMethod == 'GET') {
         $data = db_select_racing($db);
     }
-    /*if ($requestMethod == 'PUT') {
-        parse_str(file_get_contents('php://input'), $_PUT);
-        if ($id != NULL) {
-
-        } else {
-
-        }
-    }*/
+    if ($requestMethod == 'POST') {
+        var_dump($_POST); 
+    }
 }
 
 if ($data === false) {

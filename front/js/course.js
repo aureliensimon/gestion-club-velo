@@ -7,8 +7,6 @@ function loadCourses (courses) {
     */
 
     courses.forEach(course => {
-        console.table(course);
-
         let ficheCourse = $('#fiche-course-modele').clone();
 
         ficheCourse.attr('id', '');
@@ -21,10 +19,10 @@ function loadCourses (courses) {
         ficheCourse.find('#nb_tour').text(course['nb_tour']);
         ficheCourse.find('#distance').text(course['distance']);
         ficheCourse.find('#club_orga').text(course['club']);
-        ficheCourse.find('.course-coureur').attr('id', course['id']);
+        ficheCourse.find('.nom-coureur').attr('id', course['id']);
 
         ajaxRequest ('GET', '../api/request.php/runners/?idcourse=' + course['id'], getRunners);
-        ficheCourse.find('.ajouter-coureur').attr('onclick', 'add_runner("' + course['id'] + '", "' + course['mail'] + '")')
+        ficheCourse.find('.ajouter-coureur').attr('onclick', 'add_runner("' + course['id'] + '")')
 
         $('#liste-courses').append(ficheCourse);
     });
@@ -37,5 +35,38 @@ function getRunners (data) {
         $('#' + element['id']).append(text);
     });
 }
+
+function add_runner (id) {
+    document.getElementById('liste-courses').style.display= 'none';
+    var form = $('<form>');
+    form.attr('id', 'confirmer');
+
+    var legend = $('<legend>');
+    legend.text("Veuillez entrer l'adresse mail du coureur que vous souhaitez inscrire : ");
+
+    var button = $('<button>');
+    button.attr('type', 'submit');
+    button.text('Confirmer');
+    button.addClass('btn btn-warning');
+
+    var input = $('<input>');
+    input.attr('name', 'mail');
+    input.attr('type', 'email');
+    input.attr('placeholder', 'exemple@test.com');
+
+    form.append(legend);
+    form.append(input);
+    form.append('<br><br>');
+    form.append(button);
+    $('#inscription-coureur').append(form);
+    $('#confirmer').on('submit', () => {
+        ajaxRequest ('POST', '../api/request.php/racing/mail=' + $('input[name=mail]').val(), test);
+    });
+}
+
+function test (data) {
+    console.log(data);
+}
+
 
 ajaxRequest ('GET', '../api/request.php/racing', loadCourses);

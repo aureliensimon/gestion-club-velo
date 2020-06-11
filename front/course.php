@@ -18,6 +18,7 @@
         <?php include 'html/fiche-course.html';?>
 
         <section id="liste-courses"></section>
+        <section id="inscription-coureur"></Section>
 
         <?php include 'html/footer.html';?>
     </body>

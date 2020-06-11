@@ -84,6 +84,7 @@ function loadRunners (runners) {
         span2_3.addClass('info-italic-coureur-value');
         span2_3.text('Licence valide : ' + element['valide']);
 
+        // INSERTION DANS LE HTML
         div2_3.append(span2_3);
 
         div2_2_1.append(span2_2_1);
