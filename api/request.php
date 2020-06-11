@@ -18,7 +18,10 @@ $id = array_shift($request);
 if ($id == '') $id = NULL;
 $data = false;
 
-//$login = $_SESSION['user_mail'];
+if ($requestRessource == 'user') {
+    $data = db_auth_user($db,$login);
+}
+
 if ($requestRessource == 'runners') {
     $user = db_select_club($db, $login);
     foreach ($user as $key => $value) {

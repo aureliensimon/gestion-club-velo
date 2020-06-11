@@ -1,12 +1,23 @@
 'use strict';
 
-var login = 'jlr@mental.com';
-//var login = 'mccall@serie.fr';
-var password ='test';
+var login;
+var password =' motdepasse';
 
-$('#submit').on('click', () => {
-    event.preventDefault();
-    ajaxRequest ('PUT', '../api/request.php/runner/' + $('input[name=raw_mail]').val(), () => {
-        location.reload(true);
-    }, $("#modifier").serialize()); //serialize permet d'envoyer tout le contenu du form dans l'url
+if (document.cookie.split('; ').find(row => row.startsWith('username'))) {
+    let fullCookie = document.cookie.split('; ').find(row => row.startsWith('username'));
+    login = fullCookie.replace('username=', '');
+}
+
+function loadUser (data) {
+    console.log(data);
+    var text = '<h4>' + data['nom'] + ' ' + data['prenom'] + '</h4>';
+    $('#authentifie').append(text);
+}
+
+$('#login').on('click', () => {
+    $('#authentification').attr('style', 'display: none');
+    login = $('#user_mail').val();
+    document.cookie = "username=" + $('#user_mail').val();
+    ajaxRequest ('GET', '../api/request.php/user/', loadUser);
 });
+

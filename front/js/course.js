@@ -227,16 +227,8 @@ $('#ajouter-course').on('click', () => {
     $('#confirmer').on('submit', (event) => {
         event.preventDefault();
         ajaxRequest ('POST', '../api/request.php/add_racing/', () => {
-            if (data !== "") {
-                location.reload(true);
-            } else {
-                document.getElementById('errors').style.display= 'flex';
-                var div = $('<div>');
-                div.addClass('alert alert-danger');
-                div.attr('role', 'alert');
-                div.text('Erreur, Une information dans la saisie de la course n\'est pas valide. Veuillez réessayer.');
-                $('#errors').append(div);
-            }        }, $("#confirmer").serialize());
+            location.reload(true);
+        }, $("#confirmer").serialize());
     });
 });
 

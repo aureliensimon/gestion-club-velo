@@ -22,17 +22,14 @@ function dbConnect() {
 //----------------------------------------------------------------------------
 // Fonction qui authentifie et vérifie que le user est correct
 // On return False si la requête est incorrecte
-function db_auth_user($db, $mail, $pwd) {
+function db_auth_user($db, $mail) {
     try {
         $query = $db->prepare('SELECT * 
                                FROM user
-                               WHERE mail=:mail AND password=:password;
-                            ');
+                               WHERE mail=:mail;');
         $query->bindParam(':mail', $mail, PDO::PARAM_STR);
-        $query->bindParam(':password', $pwd, PDO::PARAM_STR);
         $query->execute();
-        $response = $query->fetchAll(PDO::FETCH_ASSOC);
-        
+        $response = $query->fetch(PDO::FETCH_ASSOC);
         return $response;
     }
     catch (PDOException $exception) {
