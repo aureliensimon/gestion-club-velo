@@ -129,7 +129,7 @@ function loadRunner (data) {
     $('#modifier').on('submit', () => {
         ajaxRequest ('PUT', '../api/request.php/runner/' + $('input[name=raw_mail]').val(), () => {
             ajaxRequest ('GET', '../api/request.php/runners', loadRunners);
-        }, $("#modifier").serialize());
+        }, $("#modifier").serialize()); //serialize permet d'envoyer tout le contenu du form dans l'url
     });
 }
 
