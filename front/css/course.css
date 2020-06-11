@@ -8,7 +8,7 @@
     flex-basis: 100%;
     background-color: var(--light-grey);
     border-radius: 10px;
-    border: 5px solid var(--blue);
+    border: 4px solid var(--blue);
     margin: 10px;
 }
 
@@ -71,4 +71,29 @@ body > main {
 
 #ajouter-course {
     margin-left: 100px;
+}
+
+fieldset {
+    margin-left: 100px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+    text-align: right;
+}
+
+input {
+    border: 1px solid grey;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    width: 50%;
+}
+legend {
+    padding: 10px;
+}
+
+label {
+    padding-right: 10px;
 }

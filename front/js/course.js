@@ -32,8 +32,11 @@ function getRunners (data) {
 function add_runner (id) {
     document.getElementById('liste-courses').style.display= 'none';
     document.getElementById('ajouter-course').style.display= 'none';
+
     var form = $('<form>');
     form.attr('id', 'confirmer');
+
+    var fieldset = $('<fieldset>');
 
     var legend = $('<legend>');
     legend.text("Veuillez compléter TOUTES les informations : ");
@@ -44,6 +47,9 @@ function add_runner (id) {
     button.text('Confirmer');
     button.addClass('btn btn-warning');
 
+    
+    var label_email = $('<label>');
+    label_email.text("E-mail : ");
     var email = $('<input>');
     email.attr('name', 'mail');
     email.attr('type', 'email');
@@ -55,43 +61,61 @@ function add_runner (id) {
     hidden_id.attr('type', 'hidden');
     hidden_id.attr('value', id);
 
+    var label_place = $('<label>');
+    label_place.text("Classement : ");
     var place = $('<input>');
     place.attr('name', 'place');
     place.attr('type', 'text');
     place.attr('placeholder', 'Ex : 1');
     place.prop('required', true);
 
+    var label_dossart = $('<label>');
+    label_dossart.text("Numéro du dossart : ");
     var dossart = $('<input>');
     dossart.attr('name', 'dossart');
     dossart.attr('type', 'number');
     dossart.attr('placeholder', 'Ex : 33');
     dossart.prop('required', true);
 
+    var label_nb_points = $('<label>');
+    label_nb_points.text("Nombre de points effectués : ");
     var nb_points = $('<input>');
     nb_points.attr('name', 'nb_points');
     nb_points.attr('type', 'number');
     nb_points.attr('placeholder', 'Ex : 15');
     nb_points.prop('required', true);
 
+    var label_temps = $('<label>');
+    label_temps.text("Temps : ");
     var temps = $('<input>');
     temps.attr('name', 'temps');
     temps.attr('type', 'text');
     temps.attr('placeholder', '00:30:00 (30 min)');
     temps.prop('required', true);
 
-    form.append(legend);
+    form.append(label_email);
     form.append(email);
+    form.append('<br>');
     form.append(hidden_id);
+    form.append(label_place);
     form.append(place);
+    form.append('<br>');
+    form.append(label_dossart);
     form.append(dossart);
+    form.append('<br>');
+    form.append(label_nb_points);
     form.append(nb_points);
+    form.append('<br>');
+    form.append(label_temps);
     form.append(temps);
     form.append('<br><br>');
     form.append(button);
-    $('#inscription-coureur').append(form);
+    fieldset.append(legend);
+    fieldset.append(form);
+    $('#inscription-coureur').append(fieldset);
     $('#confirmer').on('submit', () => {
         event.preventDefault();
-        ajaxRequest ('POST', '../api/request.php/racing/', (data) => {
+        ajaxRequest ('POST', '../api/request.php/racing/', () => {
                 location.reload(true);
         }, $("#confirmer").serialize());
     });
@@ -106,6 +130,8 @@ $('#ajouter-course').on('click', () => {
 
     var form = $('<form>');
     form.attr('id', 'confirmer');
+
+    var fieldset = $('<fieldset>');
 
     var legend = $('<legend>');
     legend.text("Merci de compléter TOUTES les informations concernant la course : ");
@@ -172,7 +198,6 @@ $('#ajouter-course').on('click', () => {
     club.attr('placeholder', 'Ex : ABC PLOUESCAT');
     club.prop('required', true);
 
-    form.append(legend);
     form.append(label_libelle);
     form.append(libelle);
     form.append('<br>');
@@ -195,7 +220,10 @@ $('#ajouter-course').on('click', () => {
     form.append(club);
     form.append('<br><br>');
     form.append(button);
-    $('#inscription-coureur').append(form);
+    fieldset.append(legend);
+    fieldset.append(form);
+    $('#inscription-coureur').append(fieldset);
+    
     $('#confirmer').on('submit', (event) => {
         event.preventDefault();
         ajaxRequest ('POST', '../api/request.php/add_racing/', () => {

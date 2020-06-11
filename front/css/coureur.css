@@ -98,5 +98,25 @@ body > main {
 }
 
 fieldset {
-    border-width: 10px;	
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+    text-align: right;
+}
+
+input {
+    border: 1px solid grey;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    width: 50%;
+}
+legend {
+    padding: 10px;
+}
+
+label {
+    padding-right: 10px;
 }
