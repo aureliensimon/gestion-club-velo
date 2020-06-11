@@ -181,7 +181,7 @@ function db_racing_runners($db, $club, $idcourse) {
 //----------------------------------------------------------------------------
 //--- db_post_racing_runner --------------------------------------------------
 //----------------------------------------------------------------------------
-// Récupération de la liste des cyclistes d'un club
+// Insert un particpant dans la base de données
 // On retourn False si la requête est incorrecte
 function db_post_racing_runner($db, $mail, $id, $place, $dossart, $nb_points, $temps) {
     try {
@@ -193,6 +193,31 @@ function db_post_racing_runner($db, $mail, $id, $place, $dossart, $nb_points, $t
         $query->bindParam(':dossart', $dossart, PDO::PARAM_INT);
         $query->bindParam(':point', $nb_points, PDO::PARAM_INT);
         $query->bindParam(':temps', $temps, PDO::PARAM_STR);
+        $query->execute();
+        return "";
+    }
+    catch (PDOException $exception) {
+        error_log('Connection error: '.$exception->getMessage());
+        return false;
+    }
+}
+
+//----------------------------------------------------------------------------
+//--- db_add_racing ----------------------------------------------------------
+//----------------------------------------------------------------------------
+// Ajoute une course
+// On retourn False si la requête est incorrecte
+function db_add_racing($db, $libelle, $date, $nb_tour, $distance, $nb_coureur, $longueur_tour, $club) {
+    try {
+        $query = $db->prepare("INSERT INTO course (libelle,date,nb_tour,distance,nb_coureur,longueur_tour,club)
+                               VALUES (:libelle,:date,:nb_tour,:distance,:nb_coureur,:longueur_tour,:club);");
+        $query->bindParam(':libelle', $libelle, PDO::PARAM_STR);
+        $query->bindParam(':date', $date, PDO::PARAM_STR);
+        $query->bindParam(':nb_tour', $nb_tour, PDO::PARAM_STR);
+        $query->bindParam(':distance', $distance, PDO::PARAM_STR);
+        $query->bindParam(':nb_coureur', $nb_coureur, PDO::PARAM_INT);
+        $query->bindParam(':longueur_tour', $longueur_tour, PDO::PARAM_STR);
+        $query->bindParam(':club', $club, PDO::PARAM_STR);
         $query->execute();
         return "";
     }

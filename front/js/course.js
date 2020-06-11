@@ -86,7 +86,7 @@ function add_runner (id) {
     $('#inscription-coureur').append(form);
     $('#confirmer').on('submit', () => {
         event.preventDefault();
-        ajaxRequest ('POST', '../api/request.php/racing/', (event) => {
+        ajaxRequest ('POST', '../api/request.php/racing/', () => {
             location.reload(true);
         }, $("#confirmer").serialize());
     });
@@ -133,7 +133,7 @@ $('#ajouter-course').on('click', () => {
     tours.attr('placeholder', 'Ex : 1');
 
     var label_distance = $('<label>');
-    label_distance.text("Distance totale : ");
+    label_distance.text("Distance totale (en km) : ");
     var distance = $('<input>');
     distance.attr('name', 'distance');
     distance.attr('type', 'number');
@@ -147,7 +147,7 @@ $('#ajouter-course').on('click', () => {
     nb_coureurs.attr('placeholder', 'Ex : 15');
 
     var label_longueur = $('<label>');
-    label_longueur.text("Longueur du parcours (en km) : ");
+    label_longueur.text("Longueur d'un tour (en km) : ");
     var longueur_tour = $('<input>');
     longueur_tour.attr('name', 'longueur_tour');
     longueur_tour.attr('type', 'number');
@@ -186,8 +186,8 @@ $('#ajouter-course').on('click', () => {
     $('#inscription-coureur').append(form);
     $('#confirmer').on('submit', (event) => {
         event.preventDefault();
-        ajaxRequest ('POST', '../api/request.php/racing/', () => {
-            ajaxRequest ('GET', '../api/request.php/runners', loadCourses);
+        ajaxRequest ('POST', '../api/request.php/add_racing/', () => {
+            //location.reload(true);
         }, $("#confirmer").serialize());
     });
 });

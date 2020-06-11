@@ -59,6 +59,12 @@ if ($requestRessource == 'racing') {
     }
 }
 
+if ($requestRessource == 'add_racing') {
+    if ($requestMethod == 'POST') {
+        $data = db_add_racing($db, $_POST['libelle'], $_POST['date'], $_POST['nb_tour'], $_POST['distance'], $_POST['nb_coureurs'], $_POST['longueur_tour'], $_POST['club']);
+    }
+}
+
 if ($data === false) {
     header('HTTP/1.1 400 Bad Request');
     exit();
