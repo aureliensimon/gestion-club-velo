@@ -134,5 +134,7 @@ function loadRunner (data) {
     });
 }
 
+var login = 'jlr@mental.com';
+var password ='test';
 ajaxRequest ('GET', '../api/request.php/runners', loadRunners);
 

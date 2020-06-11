@@ -8,7 +8,7 @@ $request = substr($_SERVER['PATH_INFO'], 1); //array
 $request = explode('/', $request);
 $requestRessource = array_shift($request); //string contenant photos
 $login = $_SERVER['PHP_AUTH_USER'];
-//$password = $_SERVER['PHP_AUTH_PW'];
+$password = $_SERVER['PHP_AUTH_PW'];
 
 $db = dbConnect();
 if (!$db) {

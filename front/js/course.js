@@ -68,5 +68,6 @@ function test (data) {
     console.log(data);
 }
 
-
+var login = 'jlr@mental.com';
+var password ='test';
 ajaxRequest ('GET', '../api/request.php/racing', loadCourses);
