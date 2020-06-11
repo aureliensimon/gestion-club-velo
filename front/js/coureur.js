@@ -128,13 +128,12 @@ function loadRunner (data) {
         $('#runner').append(text);
     });
     $('#modifier').on('submit', () => {
+        event.preventDefault();
         ajaxRequest ('PUT', '../api/request.php/runner/' + $('input[name=raw_mail]').val(), () => {
-            ajaxRequest ('GET', '../api/request.php/runners', loadRunners);
+            location.reload(true);
         }, $("#modifier").serialize()); //serialize permet d'envoyer tout le contenu du form dans l'url
     });
 }
 
-var login = 'jlr@mental.com';
-var password ='test';
 ajaxRequest ('GET', '../api/request.php/runners', loadRunners);
 

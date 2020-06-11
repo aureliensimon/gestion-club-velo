@@ -1,6 +1,4 @@
 <?php
-@session_start();
-
 require ('database.php');
 
 $requestMethod = $_SERVER['REQUEST_METHOD']; //get
@@ -54,7 +52,10 @@ if ($requestRessource == 'racing') {
         $data = db_select_racing($db);
     }
     if ($requestMethod == 'POST') {
-        var_dump($_POST); 
+        $data = db_select_runner($db, $_POST['mail']);
+        if (isset($_POST['id'])) {
+            $data = db_post_racing_runner($db, $_POST['mail'], $_POST['id'], $_POST['place'], $_POST['dossart'], $_POST['nb_points'], $_POST['temps']);
+        }
     }
 }
 

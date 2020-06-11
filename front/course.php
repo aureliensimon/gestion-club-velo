@@ -78,12 +78,12 @@
 
         <section id="liste-courses"></section>
         <section id="inscription-coureur"></Section>
+        <button id="ajouter-course" class="btn btn-success">Ajouter une course</button>
 
         <footer class="page-footer font-small">
             <div class="footer-copyright text-center py-3">© 2020 Copyright :
             <a href="https://github.com/aureliensimon/gestion-club-velo">Aubane Lecorchet - Aurélien Simon</a>
             </div>
-            <div><input type="submit" value="Se déconnecter" onclick="disconnectUser()"></div>
         </footer>
     </body>
 </html>

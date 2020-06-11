@@ -170,8 +170,31 @@ function db_racing_runners($db, $club, $idcourse) {
         $query->bindParam(':id', $idcourse, PDO::PARAM_INT);
         $query->execute();
         $response = $query->fetchAll(PDO::FETCH_ASSOC);
-        
         return $response;
+    }
+    catch (PDOException $exception) {
+        error_log('Connection error: '.$exception->getMessage());
+        return false;
+    }
+}
+
+//----------------------------------------------------------------------------
+//--- db_post_racing_runner --------------------------------------------------
+//----------------------------------------------------------------------------
+// Récupération de la liste des cyclistes d'un club
+// On retourn False si la requête est incorrecte
+function db_post_racing_runner($db, $mail, $id, $place, $dossart, $nb_points, $temps) {
+    try {
+        $query = $db->prepare('INSERT INTO participe (mail, id, place, dossart, point, temps)
+                               VALUES (:mail,:id,:place,:dossart,:point,:temps);');
+        $query->bindParam(':mail', $mail, PDO::PARAM_STR);
+        $query->bindParam(':id', $id, PDO::PARAM_INT);
+        $query->bindParam(':place', $place, PDO::PARAM_INT);
+        $query->bindParam(':dossart', $dossart, PDO::PARAM_INT);
+        $query->bindParam(':point', $nb_points, PDO::PARAM_INT);
+        $query->bindParam(':temps', $temps, PDO::PARAM_STR);
+        $query->execute();
+        return "";
     }
     catch (PDOException $exception) {
         error_log('Connection error: '.$exception->getMessage());

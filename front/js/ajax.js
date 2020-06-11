@@ -1,5 +1,8 @@
 'use strict';
 
+var login = 'jlr@mental.com';
+var password ='test';
+
 //----------------------------------------------------------------------------
 //--- ajaxRequest ------------------------------------------------------------
 //----------------------------------------------------------------------------
@@ -10,7 +13,8 @@ function ajaxRequest (type, url, callback, data = null) {
         url += '?' + data;
     }
     xhr.open (type, url);
-    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(login + ':' + password)); 
+    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(login + ':' + password));
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = () => {
         switch (xhr.status) {
             case 200:
