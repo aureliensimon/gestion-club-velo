@@ -1,6 +1,6 @@
 .navbar {
     height: 100px !important;
-    background-color: var(--black) !important;
+    background-color: rgb(38, 38, 74) !important;
 }
 .navbar-brand {
     font-size: 3vmin;
@@ -27,4 +27,11 @@
 .ml-auto .dropdown-menu {
     left: auto !important;
     right: 0px;
+}
+
+.logo {
+    margin-left: 20px;
+    margin-right: -10px;
+    border-radius: 10px;
+    max-width: 50px;
 }

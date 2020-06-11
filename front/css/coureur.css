@@ -82,3 +82,21 @@
     font-weight: 200;
 }
 
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body > main {
+    flex: 1;
+    margin-top: 50px;
+}
+
+#modifier {
+    margin-left: 100px;
+}
+
+fieldset {
+    border-width: 10px;	
+}

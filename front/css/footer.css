@@ -1,12 +1,12 @@
 footer {
     margin-top: 50px;
-    background-color: var(--black) !important;
+    background-color: rgb(38, 38, 74) !important;
 }
 
 footer div {
-    color: var(--white) !important;
+    color: rgba(255,255,255,.5) !important;
 }
 
 footer div a {
-    color: var(--blue) !important;
+    color: rgba(255,255,255,.5) !important;
 }
