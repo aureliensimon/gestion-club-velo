@@ -10,7 +10,7 @@ function ajaxRequest (type, url, callback, data = null) {
         url += '?' + data;
     }
     xhr.open (type, url);
-    //xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(login)); 
     xhr.onload = () => {
         switch (xhr.status) {
             case 200:

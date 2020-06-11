@@ -7,6 +7,8 @@ $requestMethod = $_SERVER['REQUEST_METHOD']; //get
 $request = substr($_SERVER['PATH_INFO'], 1); //array
 $request = explode('/', $request);
 $requestRessource = array_shift($request); //string contenant photos
+$login = $_SERVER['PHP_AUTH_USER'];
+//$password = $_SERVER['PHP_AUTH_PW'];
 
 $db = dbConnect();
 if (!$db) {
@@ -18,9 +20,9 @@ $id = array_shift($request);
 if ($id == '') $id = NULL;
 $data = false;
 
-$mail = $_SESSION['user_mail'];
+//$login = $_SESSION['user_mail'];
 if ($requestRessource == 'runners') {
-    $user = db_select_club($db, $mail);
+    $user = db_select_club($db, $login);
     foreach ($user as $key => $value) {
         $data = db_select_runners($db, $value['club']);
         if (isset($_GET['idcourse'])) {
