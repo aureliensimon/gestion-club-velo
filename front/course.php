@@ -58,7 +58,7 @@
             </div>
             <div class="second-row">
                 <div class="course-coureur">
-                    <u>Joueurs du club inscrits : </u>
+                    <u>Coureurs du club inscrits : </u>
                     <span class="nom-coureur"></span>
                 </div>
                 <div>
