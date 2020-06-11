@@ -1,8 +1,8 @@
-<section id="authentification">
-    <form method="POST" action="session.php">
+<section id="authentification" style="display: none">
+    <form>
         <label>Veuillez entrer votre adresse mail :</label>
-        <input type="email" name="user_mail" placeholder="exemple@test.com" autofocus required>
-        <input type="password" name="user_pwd" placeholder="password" autofocus required>
-        <input type="submit" id="submit" value="Confirmer">
+        <input type="email" id="user_mail" placeholder="exemple@test.com" autofocus required>
+        <input type="password" id="user_pwd" placeholder="password" autofocus required>
+        <input type="button" id="submit" value="Confirmer" onclick="setLogin()">
     </form>
 </section>

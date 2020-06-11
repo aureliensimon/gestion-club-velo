@@ -7,24 +7,15 @@
         
         <title>Gestion club de vélo</title>
         <script src="js/ajax.js" defer></script>
+        <script src="js/session.js" defer></script>
         <script src="js/logout.js" defer></script>
         
     </head>
     <body>
         <?php include 'html/navbar.html'; ?>
+        <?php include 'html/form-auth.html'; ?>
 
-        <?php
-            if (!empty($_SESSION)) {
-                echo '<span>Rebonjour, '. $_SESSION['user_mail'] .'</span>';
-                if ($_SESSION['admin'] != NULL) {
-                    echo '<br><span>Vous êtes authentifié comme administrateur.</span>';
-                } else {
-                    echo '<br><span>Vous êtes authentifié comme responsable club.</span>';
-                }
-            } else {
-                include 'html/form-auth.html';
-            }
-        ?>
+        <div id="content"></div>
         
         <?php include 'html/footer.html';?>
     </body>
