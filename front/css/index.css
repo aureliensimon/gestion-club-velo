@@ -9,3 +9,9 @@ body > main {
     margin-top: 50px;
     text-align: center;
 }
+
+.cookie {
+    margin-left: 20px;
+    border-radius: 5px;
+    max-width: 100px;
+}
