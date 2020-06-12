@@ -25,3 +25,12 @@
     text-align: center;
     padding: 25px;
 }
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+body > main{
+    flex: 1;
+}
