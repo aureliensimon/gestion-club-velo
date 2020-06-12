@@ -12,6 +12,18 @@ function addOptions (courses) {
 function showResults (results) {
     let t = document.getElementById('table-result');
 
+    while(t.firstChild) t.removeChild(t.firstChild);
+
+    let header = document.createElement('tr');
+    let headersTitles = ['Mail', 'Place', 'Dossard', 'Points', 'Temps'];
+
+    for (let h of headersTitles) {
+        let th = document.createElement('th');
+        th.innerText = h;
+        header.appendChild(th);
+    }
+    t.appendChild(header);
+
     results.forEach(participant => {
         let row = document.createElement('tr');
         
