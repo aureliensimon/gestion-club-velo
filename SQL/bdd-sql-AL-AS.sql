@@ -168,6 +168,20 @@ INSERT INTO `participe` (`mail`, `id`, `place`, `dossart`, `point`, `temps`) VAL
 ('dj@taem.com', 1, '4', '55', 7, '02:24:04'),
 ('kc@pli.fr', 1, '5', '21', 4, '02:34:04'),
 ('lb@team.fr', 1, '6', '18', 3, '02:44:04');
+INSERT INTO `participe` (`mail`, `id`, `place`, `dossart`, `point`, `temps`) VALUES
+('md@ilg.com', 2, '25', '55', 15, '02:04:04'),
+('sjm@rest.ft', 2, '27', '76', 10, '02:07:04'),
+('pc@uti.fr', 2, '31', '81', 8, '02:14:04'),
+('dj@taem.com', 2, '46', '55', 7, '02:24:04'),
+('kc@pli.fr', 2, '47', '21', 4, '02:34:04'),
+('lg@team.fr', 2, '49', '18', 3, '02:44:04');
+INSERT INTO `participe` (`mail`, `id`, `place`, `dossart`, `point`, `temps`) VALUES
+('tb@opf.com', 3, '25', '55', 15, '02:04:04'),
+('cl@team.gt', 3, '150', '76', 10, '02:07:04'),
+('kc@pli.fr', 3, '156', '81', 8, '02:14:04'),
+('dj@taem.com', 3, '232', '55', 7, '02:24:04'),
+('my@trez.fr', 3, '303', '21', 4, '02:34:04'),
+('lb@team.fr', 3, '306', '18', 3, '02:44:04');
 
 -- --------------------------------------------------------
 --
