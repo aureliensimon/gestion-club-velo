@@ -12,6 +12,8 @@ function loadUser (data) {
     console.log(data);
     var text = '<h4>' + data['nom'] + ' ' + data['prenom'] + '</h4>';
     $('#authentifie').append(text);
+    var text_cookie = '<br><br><h6>Nous allons stocker votre adresse mail sur un cookie.<br><br><img class="cookie" src="img/cookie.jpg"></h6>';
+    $('#authentifie').append(text_cookie);
 }
 
 $('#login').on('click', () => {
