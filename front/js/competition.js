@@ -1,0 +1,35 @@
+function addOptions (courses) {
+    let datalist = document.getElementById('dropdown-liste-courses');
+
+    courses.forEach(course => {
+        let option = document.createElement('option');
+        option.value = course.libelle;
+        option.innerText = course.libelle;
+        datalist.appendChild(option);
+    });
+}
+
+function showResults (results) {
+    let t = document.getElementById('table-result');
+
+    results.forEach(participant => {
+        let row = document.createElement('tr');
+        
+        for(var info in participant) {
+            if (info == 'id') continue;
+
+            let td = document.createElement('td');
+            td.innerText = participant[info];
+            row.appendChild(td);
+        }
+
+        t.appendChild(row);
+    });
+}
+
+function getTarget () {
+    let target = document.getElementById('dropdown-liste-courses').options[document.getElementById('dropdown-liste-courses').selectedIndex].value;
+    ajaxRequest ('GET', '../api/request.php/getResult', showResults);
+}
+
+ajaxRequest ('GET', '../api/request.php/racing', addOptions);

@@ -249,4 +249,17 @@ function db_add_racing($db, $libelle, $date, $nb_tour, $distance, $nb_coureur, $
         return false;
     }
 }
+
+function db_getResult ($db) {
+    try {
+        $query = $db->prepare("SELECT * FROM participe");
+        $query->execute();
+        $response = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $response;
+    }
+    catch (PDOException $exception) {
+        error_log('Connection error: '.$exception->getMessage());
+        return false;
+    }
+}
 ?>
