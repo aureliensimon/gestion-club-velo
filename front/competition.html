@@ -19,15 +19,15 @@
         <link rel="stylesheet" href="css/navbar.css">
         <link rel="stylesheet" href="css/footer.css">
 
-        <title>Gestion des membres du club de vélo</title>
+        <title>Gestion des compétitions du club de vélo</title>
         
         <!-- CSS -->
-        <link rel="stylesheet" href="css/coureur.css">
+        <link rel="stylesheet" href="css/competition.css">
 
         <!-- JS -->
         <script src="js/index.js" defer></script>
         <script src="js/ajax.js" defer></script>
-        <script src="js/coureur.js" defer></script>
+        <script src="js/competition.js" defer></script>
 
     </head>
     <body>
@@ -40,25 +40,34 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="coureur.html">Coureurs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="course.html">Courses</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="competition.html">Compétitions</a>
                     </li>
                     </ul>
                 </div>
             </nav>
         </header>
+        
+        <div id="main">
+            <select id="dropdown-liste-courses"></select>
+            <input type="button" value="rechercher" onclick="getTarget()">
 
-       <main>
-        <section id="errors" style="display: none;"></section>
-        <section id="runners"></section>
-        <section id="runner" style="display: none"></section>
-       </main>
+            <table id="table-result">
+                <tr>
+                  <th>Mail</th>
+                  <th>Place</th>
+                  <th>Dossard</th>
+                  <th>Points</th>
+                  <th>Temps</th>
+                </tr>
+            </table>
+        </div>
 
         <footer class="page-footer font-small">
             <div class="footer-copyright text-center py-3">© 2020 Copyright :

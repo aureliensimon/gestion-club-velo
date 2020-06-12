@@ -76,6 +76,14 @@ if ($requestRessource == 'add_racing') {
     }
 }
 
+if ($requestRessource == 'getResult') {
+    if ($requestMethod == 'GET') {
+        $data = db_getResult($db);
+    } else {
+        $data="";
+    }
+}
+
 if ($data === false) {
     header('HTTP/1.1 400 Bad Request');
     exit();
