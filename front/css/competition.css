@@ -19,3 +19,9 @@
 #table-result, th, td {
     border: 1px solid black;
 }
+
+#recherche {
+    margin: 0 auto;
+    text-align: center;
+    padding: 25px;
+}
