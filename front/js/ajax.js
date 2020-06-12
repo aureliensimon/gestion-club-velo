@@ -4,7 +4,7 @@
 //--- ajaxRequest ------------------------------------------------------------
 //----------------------------------------------------------------------------
 // Doing the Request with the php functions.
-function ajaxRequest (type, url, callback, data = null) {
+function ajaxRequest (type, url, callback, data = null, option = null) {
     let xhr = new XMLHttpRequest ();
     if (type == 'GET' && data != null) {
         url += '?' + data;
@@ -17,7 +17,7 @@ function ajaxRequest (type, url, callback, data = null) {
             case 200:
             case 201: 
                 var data = JSON.parse(xhr.responseText);
-                callback(data);
+                callback(data, option);
                 break;
             default:
                 httpErrors(xhr.status);
