@@ -115,7 +115,7 @@ function loadRunners (runners) {
 
 function modify_runner (mail) {
     console.log(mail);
-    ajaxRequest ('GET', '../api/request.php/runner/?mail='+mail, loadRunner);
+    ajaxRequest ('GET', 'http://prj-cir2-web-api.monposte/request.php/runner/?mail='+mail, loadRunner);
 }
 
 function loadRunner (data) {
@@ -128,11 +128,11 @@ function loadRunner (data) {
     });
     $('#modifier').on('submit', () => {
         event.preventDefault();
-        ajaxRequest ('PUT', '../api/request.php/runner/' + $('input[name=raw_mail]').val(), () => {
+        ajaxRequest ('PUT', 'http://prj-cir2-web-api.monposte/request.php/runner/' + $('input[name=raw_mail]').val(), () => {
             location.reload(true);
         }, $("#modifier").serialize()); //serialize permet d'envoyer tout le contenu du form dans l'url
     });
 }
 
-ajaxRequest ('GET', '../api/request.php/runners', loadRunners);
+ajaxRequest ('GET', 'http://prj-cir2-web-api.monposte/request.php/runners', loadRunners);
 

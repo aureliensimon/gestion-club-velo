@@ -18,6 +18,6 @@ $('#login').on('click', () => {
     $('#authentification').attr('style', 'display: none');
     login = $('#user_mail').val();
     document.cookie = "username=" + $('#user_mail').val();
-    ajaxRequest ('GET', '../api/request.php/user/', loadUser);
+    ajaxRequest ('GET', 'http://prj-cir2-web-api.monposte/request.php/user/', loadUser);
 });
 

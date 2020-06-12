@@ -84,6 +84,11 @@ if ($requestRessource == 'getResult') {
     }
 }
 
+if ($requestMethod == 'OPTIONS') {
+    header('HTTP/1.1 200 OK');
+    exit();
+}
+
 if ($data === false) {
     header('HTTP/1.1 400 Bad Request');
     exit();

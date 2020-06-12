@@ -14,7 +14,7 @@ function loadCourses (courses) {
         ficheCourse.find('#club_orga').text(course['club']);
         ficheCourse.find('.nom-coureur').attr('id', course['id']);
 
-        ajaxRequest ('GET', '../api/request.php/runners/?idcourse=' + course['id'] + '&club_course=' + course['club'], getRunners);
+        ajaxRequest ('GET', 'http://prj-cir2-web-api.monposte/request.php/runners/?idcourse=' + course['id'] + '&club_course=' + course['club'], getRunners);
         ficheCourse.find('.ajouter-coureur').attr('onclick', 'add_runner("' + course['id'] + '")');
 
         $('#liste-courses').append(ficheCourse);
@@ -115,7 +115,7 @@ function add_runner (id) {
     $('#inscription-coureur').append(fieldset);
     $('#confirmer').on('submit', () => {
         event.preventDefault();
-        ajaxRequest ('POST', '../api/request.php/racing/', () => {
+        ajaxRequest ('POST', 'http://prj-cir2-web-api.monposte/request.php/racing/', () => {
                 location.reload(true);
         }, $("#confirmer").serialize());
     });
@@ -226,10 +226,10 @@ $('#ajouter-course').on('click', () => {
     
     $('#confirmer').on('submit', (event) => {
         event.preventDefault();
-        ajaxRequest ('POST', '../api/request.php/add_racing/', () => {
+        ajaxRequest ('POST', 'http://prj-cir2-web-api.monposte/request.php/add_racing/', () => {
             location.reload(true);
         }, $("#confirmer").serialize());
     });
 });
 
-ajaxRequest ('GET', '../api/request.php/racing/', loadCourses);
+ajaxRequest ('GET', 'http://prj-cir2-web-api.monposte/request.php/racing/', loadCourses);
