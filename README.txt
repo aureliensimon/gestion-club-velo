@@ -16,6 +16,8 @@ Choses à savoir :
 
 	- dossier API : fichiers php, du renvoi json
 
+	/!\ SI VOUS SOUHAITEZ CHANGER LES CONSTANTES, MERCI DE BIEN VOULOIR MODIFIER LE FICHIER constants.php /!\
+
 	- dossier FRONT : tous les fichiers html, les images, javascripts et CSS
 
 	- dossier SQL : contient la base de données à insérer dans phpmyadmin

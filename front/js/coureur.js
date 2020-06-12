@@ -1,3 +1,7 @@
+/* ***** loadRunners ***** 
+ * Fonction très longue qui charge juste tous les coureurs du club
+ * Pour plus de compréhension, vous pouvez regarder la page html
+*/
 function loadRunners (runners) {
     console.log(runners);
     runners.forEach(function (element) {
@@ -113,11 +117,19 @@ function loadRunners (runners) {
     });
 }
 
+/* ***** modify_runner ***** 
+ * Fonction qui fait appel à une requête AJAX pour récupérer toutes les informations du coureur
+*/
 function modify_runner (mail) {
     console.log(mail);
     ajaxRequest ('GET', 'http://prj-cir2-web-api.monposte/request.php/runner/?mail='+mail, loadRunner);
 }
 
+/* ***** loadRunner ***** 
+ * Fonction qui créer un formulaire pour modifier les informations du coureur sélectionné
+ * (Selon les base de données, il est possible que pour une raison inconnue, cela ne fonctionne pas)
+ * Par défaut, les values qui s'affichent sont celles entrées dans la base de données
+*/
 function loadRunner (data) {
     document.getElementById('runners').style.display= 'none';
     document.getElementById('runner').style.display= 'flex';
@@ -134,5 +146,6 @@ function loadRunner (data) {
     });
 }
 
+// Requête qui récupère tous les coureurs du club
 ajaxRequest ('GET', 'http://prj-cir2-web-api.monposte/request.php/runners', loadRunners);
 

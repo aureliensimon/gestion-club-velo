@@ -1,3 +1,8 @@
+/* ***** loadCourses ***** 
+ * Fonction va afficher toutes les courses et les informations les concernants
+ * On effectue une requête AJAX pour récupérer les coureurs inscrits en fonction de l'organisateur de la course
+ * Si organisateur, voit tous les inscrits, sinon uniquement ceux de son club
+*/
 function loadCourses (courses) {
     courses.forEach(course => {
         let ficheCourse = $('#fiche-course-modele').clone();
@@ -21,6 +26,9 @@ function loadCourses (courses) {
     });
 }
 
+/* ***** getRunners ***** 
+ * Affiche le nom et le prénom des coureurs inscrits à la course
+*/
 function getRunners (data) {
     console.log(data);
     data.forEach(function (element) {
@@ -29,6 +37,10 @@ function getRunners (data) {
     });
 }
 
+/* ***** add_runner ***** 
+ * Fonction qui ajoute un coureur à la course sur laquelle on a cliqué
+ * On effectue une requ$ete AJAX à la fin pour l'insérer dans la base de données
+*/
 function add_runner (id) {
     document.getElementById('liste-courses').style.display= 'none';
     document.getElementById('ajouter-course').style.display= 'none';
@@ -232,4 +244,5 @@ $('#ajouter-course').on('click', () => {
     });
 });
 
+// Requête pour récupérer toutes les courses
 ajaxRequest ('GET', 'http://prj-cir2-web-api.monposte/request.php/racing/', loadCourses);
