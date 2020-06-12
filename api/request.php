@@ -78,7 +78,7 @@ if ($requestRessource == 'add_racing') {
 
 if ($requestRessource == 'getResult') {
     if ($requestMethod == 'GET') {
-        $data = db_getResult($db);
+        $data = db_getResult($db, $_GET['course']);
     } else {
         $data="";
     }

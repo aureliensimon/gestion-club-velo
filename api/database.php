@@ -250,9 +250,10 @@ function db_add_racing($db, $libelle, $date, $nb_tour, $distance, $nb_coureur, $
     }
 }
 
-function db_getResult ($db) {
+function db_getResult ($db, $courseID) {
     try {
-        $query = $db->prepare("SELECT * FROM participe");
+        $query = $db->prepare("SELECT mail, place, dossard, point, temps FROM participe p JOIN course c WHERE :courseID=p.id;");
+        $query->bindParam(':courseID', $courseID, PDO::PARAM_STR);
         $query->execute();
         $response = $query->fetchAll(PDO::FETCH_ASSOC);
         return $response;

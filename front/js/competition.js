@@ -41,7 +41,7 @@ function showResults (results) {
 
 function getTarget () {
     let target = document.getElementById('dropdown-liste-courses').options[document.getElementById('dropdown-liste-courses').selectedIndex].value;
-    ajaxRequest ('GET', 'http://prj-cir2-web-api.monposte/request.php/getResult', showResults);
+    ajaxRequest ('GET', 'http://prj-cir2-web-api.monposte/request.php/getResult/?course=1', showResults);
 }
 
 ajaxRequest ('GET', 'http://prj-cir2-web-api.monposte/request.php/racing', addOptions);
