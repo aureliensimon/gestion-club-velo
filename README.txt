@@ -17,3 +17,5 @@ Choses à savoir :
 	- dossier API : fichiers php, du renvoi json
 
 	- dossier FRONT : tous les fichiers html, les images, javascripts et CSS
+
+	- dossier SQL : contient la base de données à insérer dans phpmyadmin
