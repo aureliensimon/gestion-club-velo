@@ -1,3 +1,21 @@
 #table-result {
-    background-color: red;
+    margin: 0 auto;
+    width: 90%;
+    text-align: center;
+    margin-top: 25px;
+    border-collapse: collapse;
+}
+
+#table-result th {
+    background-color: var(--blue);
+    color: white;
+    padding: 5px 0px;
+}
+
+#table-result tr:nth-child(2n) {
+    background-color: lightgrey;
+}
+
+#table-result, th, td {
+    border: 1px solid black;
 }
